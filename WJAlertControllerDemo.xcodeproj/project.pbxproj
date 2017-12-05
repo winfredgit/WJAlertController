@@ -12,6 +12,7 @@
 		B70C37B41FC95AE700CD86E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70C37B21FC95AE700CD86E6 /* Main.storyboard */; };
 		B70C37B61FC95AE700CD86E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B70C37B51FC95AE700CD86E6 /* Assets.xcassets */; };
 		B70C37B91FC95AE700CD86E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70C37B71FC95AE700CD86E6 /* LaunchScreen.storyboard */; };
+		B7A39FCD1FD6857F00CA37D3 /* WJCustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A39FCC1FD6857F00CA37D3 /* WJCustomAlertView.xib */; };
 		B7D116BA1FC966C6000633A9 /* WJAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D116B91FC966C6000633A9 /* WJAlertController.swift */; };
 		B7D116BC1FC992B5000633A9 /* WJAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D116BB1FC992B5000633A9 /* WJAlertView.xib */; };
 		B7D116BE1FC992D8000633A9 /* WJAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D116BD1FC992D8000633A9 /* WJAlertView.swift */; };
@@ -26,6 +27,7 @@
 		B70C37B51FC95AE700CD86E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B70C37B81FC95AE700CD86E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B70C37BA1FC95AE700CD86E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7A39FCC1FD6857F00CA37D3 /* WJCustomAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WJCustomAlertView.xib; sourceTree = "<group>"; };
 		B7D116B91FC966C6000633A9 /* WJAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WJAlertController.swift; sourceTree = "<group>"; };
 		B7D116BB1FC992B5000633A9 /* WJAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WJAlertView.xib; sourceTree = "<group>"; };
 		B7D116BD1FC992D8000633A9 /* WJAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WJAlertView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				B7D116B91FC966C6000633A9 /* WJAlertController.swift */,
 				B7D116BB1FC992B5000633A9 /* WJAlertView.xib */,
+				B7A39FCC1FD6857F00CA37D3 /* WJCustomAlertView.xib */,
 				B7D116BD1FC992D8000633A9 /* WJAlertView.swift */,
 				B7D116BF1FCA6994000633A9 /* WJAlertAction.swift */,
 			);
@@ -146,6 +149,7 @@
 				B7D116BC1FC992B5000633A9 /* WJAlertView.xib in Resources */,
 				B70C37B91FC95AE700CD86E6 /* LaunchScreen.storyboard in Resources */,
 				B70C37B61FC95AE700CD86E6 /* Assets.xcassets in Resources */,
+				B7A39FCD1FD6857F00CA37D3 /* WJCustomAlertView.xib in Resources */,
 				B70C37B41FC95AE700CD86E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

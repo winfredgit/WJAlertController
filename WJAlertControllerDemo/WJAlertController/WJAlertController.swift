@@ -13,6 +13,7 @@ class WJAlertController: UIViewController {
     
     var alertTitle: String
     var message: String
+    var customView: UIView?
     var actions: [WJAlertAction]
     var cancelAction: WJAlertAction?
     var cancelHandler: ((WJAlertAction) -> Void)?
@@ -31,6 +32,21 @@ class WJAlertController: UIViewController {
         self.modalPresentationStyle = .overFullScreen
     }
     
+    init(title: String, customView: UIView)
+    {
+        alertView = Bundle.main.loadNibNamed("WJCustomAlertView",
+                                             owner: nil,
+                                             options: nil)![0] as! WJAlertView
+        alertTitle = title
+        message = ""
+        self.customView = customView
+        alertView.containerView.addSubview(self.customView!)
+        alertView.containerHConstraint.constant = self.customView!.frame.size.height
+        actions = [WJAlertAction]()
+        super.init(nibName: nil, bundle: nil)
+        self.modalPresentationStyle = .overFullScreen
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -44,22 +60,26 @@ class WJAlertController: UIViewController {
     {
         let screenFrame = UIScreen.main.bounds
         self.view.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
-        let size = message.boundingRect(with: CGSize(width: 182, height: 0),
-                                        options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                        attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13)],
-                                        context: nil).size
-        if size.height > alertView.messageHConstraint.constant {
-            alertView.messageHConstraint.constant = size.height
+        var height: CGFloat = 0
+        if (message != "") {
+            let size = message.boundingRect(with: CGSize(width: 224, height: 0),
+                                            options: NSStringDrawingOptions.usesLineFragmentOrigin,
+                                            attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)],
+                                            context: nil).size
+            height = 135.0 + size.height
+        } else {
+            height = 135.0 + customView!.frame.size.height
         }
-        let height = 50 + alertView.messageHConstraint.constant + 20 + 40 + 14
-        alertView.frame = CGRect(x: 0, y: 0, width: 252, height: height)
-        alertView.center = CGPoint(x: screenFrame.width/2, y: screenFrame.height/2)
+        alertView.frame = CGRect(x: 0, y: 0, width: 270, height: height)
+        alertView.center = CGPoint(x: screenFrame.width/2.0, y: screenFrame.height/2.0)
         alertView.titleLabel.text = alertTitle
-        alertView.messageLabel.text = message
+        if (alertView.messageLabel != nil) {
+            alertView.messageLabel!.text = message
+        }
         alertView.cancelButton.addTarget(self, action: #selector(touchCancel), for: .touchUpInside)
         alertView.actionButton.addTarget(self, action: #selector(touchAction), for: .touchUpInside)
         for action in actions {
-            if action.style == WJAlertActionStyle.cancel {
+            if action.style == 0 {
                 alertView.cancelButton.setTitle(action.title, for: .normal)
                 cancelAction = action
                 cancelHandler = action.handler

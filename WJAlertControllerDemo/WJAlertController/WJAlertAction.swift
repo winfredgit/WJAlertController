@@ -15,10 +15,10 @@ enum WJAlertActionStyle: Int {
 
 class WJAlertAction: NSObject {
     var title: String
-    var style: WJAlertActionStyle
+    var style: Int
     var handler: ((WJAlertAction) -> Void)?
     
-    init(title: String, style: WJAlertActionStyle, handler: ((WJAlertAction) -> Void)?)
+    init(title: String, style: Int, handler: ((WJAlertAction) -> Void)?)
     {
         self.title = title
         self.style = style

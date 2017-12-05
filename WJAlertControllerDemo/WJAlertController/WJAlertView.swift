@@ -10,10 +10,10 @@ import UIKit
 
 class WJAlertView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var messageHConstraint: NSLayoutConstraint!
+    @IBOutlet weak var messageLabel: UILabel?
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerHConstraint: NSLayoutConstraint!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var cancelMRConstraint: NSLayoutConstraint!
     @IBOutlet weak var cancelWConstraint: NSLayoutConstraint!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var actionWConstraint: NSLayoutConstraint!
@@ -25,25 +25,27 @@ class WJAlertView: UIView {
     
     func settingUI()
     {
-        backgroundColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1)
         layer.masksToBounds = true
-        layer.cornerRadius = 12
-        cancelButton.layer.cornerRadius = 5
-        actionButton.layer.cornerRadius = 5
+        layer.cornerRadius = 6
+        cancelButton.layer.borderWidth = 1
+        cancelButton.layer.borderColor = UIColor(red: 102/255.0,
+                                                 green: 187/255.0,
+                                                 blue: 71/255.0,
+                                                 alpha: 1).cgColor
+        cancelButton.layer.cornerRadius = 4
+        actionButton.layer.cornerRadius = 4
     }
     
     func hiddenCancelButton()
     {
         cancelButton.isHidden = true
-        cancelMRConstraint.constant = -100
-        actionWConstraint.constant = 210
+        actionWConstraint.constant = 230
     }
     
     func hiddenActionButton()
     {
         actionButton.isHidden = true
-        cancelMRConstraint.constant = -100
-        cancelWConstraint.constant = 210
+        cancelWConstraint.constant = 230
     }
     
 }
