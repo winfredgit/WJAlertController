@@ -36,14 +36,14 @@ class ViewController: UIViewController {
     @IBAction func touchTest(_ sender: UIButton)
     {
 //        showAlertController()
-//        let alertController = WJAlertController(title: "提醒",
-//                                                message: "您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！")
-        let customView = UIView()
-        customView.layer.cornerRadius = 6
-        customView.frame = CGRect(x: 0, y: 0, width: 224, height: 200)
-        customView.backgroundColor = UIColor.red
-        let alertController = WJAlertController(title: "提示",
-                                                customView: customView)
+        let alertController = WJAlertController(title: "提醒",
+                                                message: "您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！您的发布次数已达上限，为了更好的促进您的生意，您可以通过获得10个好评提升您的信用哦！")
+//        let customView = UIView()
+//        customView.layer.cornerRadius = 6
+//        customView.frame = CGRect(x: 0, y: 0, width: 224, height: 1000)
+//        customView.backgroundColor = UIColor.red
+//        let alertController = WJAlertController(title: "提示",
+//                                                customView: customView)
         let exitAction = WJAlertAction(title: "我知道了",
                                        style: 0,
                                        handler: {

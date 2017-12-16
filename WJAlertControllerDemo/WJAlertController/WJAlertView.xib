@@ -25,6 +25,9 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的发布次数已达上限，为了更好的\n促进您的生意，您可以通过获得\n10个好评提升您的信用哦！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcR-aE-0f3">
                     <rect key="frame" x="23" y="50.5" width="224" height="50.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="hVg-E9-fBb"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -87,6 +90,7 @@
                 <outlet property="cancelButton" destination="qou-Lc-jFy" id="5kO-LC-eCl"/>
                 <outlet property="cancelWConstraint" destination="7Fq-vo-dGT" id="zEZ-WC-X4W"/>
                 <outlet property="messageLabel" destination="hcR-aE-0f3" id="BL4-rf-Djy"/>
+                <outlet property="messageMHConstraint" destination="hVg-E9-fBb" id="vHh-3M-EaY"/>
                 <outlet property="titleLabel" destination="AEn-xw-xMO" id="xwb-65-E8u"/>
             </connections>
             <point key="canvasLocation" x="-80" y="2"/>

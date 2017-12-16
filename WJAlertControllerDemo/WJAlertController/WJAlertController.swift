@@ -61,14 +61,20 @@ class WJAlertController: UIViewController {
         let screenFrame = UIScreen.main.bounds
         self.view.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
         var height: CGFloat = 0
+        let contentMaxHeight = UIScreen.main.bounds.size.height - 135.0 - 24 * 2
         if (message != "") {
             let size = message.boundingRect(with: CGSize(width: 224, height: 0),
                                             options: NSStringDrawingOptions.usesLineFragmentOrigin,
                                             attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)],
                                             context: nil).size
-            height = 135.0 + size.height
+            alertView.messageMHConstraint.constant = size.height > contentMaxHeight ? contentMaxHeight : size.height
+            height = 135.0 + alertView.messageMHConstraint.constant
         } else {
-            height = 135.0 + customView!.frame.size.height
+            var frame = customView!.frame
+            frame.size.height = frame.size.height > contentMaxHeight ? contentMaxHeight : frame.size.height
+            customView!.frame = frame
+            alertView.containerHConstraint.constant = frame.size.height
+            height = 135.0 + alertView.containerHConstraint.constant
         }
         alertView.frame = CGRect(x: 0, y: 0, width: 270, height: height)
         alertView.center = CGPoint(x: screenFrame.width/2.0, y: screenFrame.height/2.0)

@@ -11,6 +11,7 @@ import UIKit
 class WJAlertView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel?
+    @IBOutlet weak var messageMHConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerHConstraint: NSLayoutConstraint!
     @IBOutlet weak var cancelButton: UIButton!
