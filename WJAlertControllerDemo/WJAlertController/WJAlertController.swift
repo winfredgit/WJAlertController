@@ -71,6 +71,7 @@ class WJAlertController: UIViewController {
             height = 103.5 + alertView.messageMHConstraint.constant
         } else {
             var frame = customView!.frame
+            frame.size.width = 204
             frame.size.height = frame.size.height > contentMaxHeight ? contentMaxHeight : frame.size.height
             customView!.frame = frame
             alertView.containerHConstraint.constant = frame.size.height
