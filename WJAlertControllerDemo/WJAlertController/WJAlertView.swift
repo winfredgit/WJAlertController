@@ -18,6 +18,7 @@ class WJAlertView: UIView {
     @IBOutlet weak var cancelWConstraint: NSLayoutConstraint!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var actionWConstraint: NSLayoutConstraint!
+    @IBOutlet weak var actionMLConstraint: NSLayoutConstraint!
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -27,26 +28,20 @@ class WJAlertView: UIView {
     func settingUI()
     {
         layer.masksToBounds = true
-        layer.cornerRadius = 6
-        cancelButton.layer.borderWidth = 1
-        cancelButton.layer.borderColor = UIColor(red: 102/255.0,
-                                                 green: 187/255.0,
-                                                 blue: 71/255.0,
-                                                 alpha: 1).cgColor
-        cancelButton.layer.cornerRadius = 4
-        actionButton.layer.cornerRadius = 4
+        layer.cornerRadius = 12
     }
     
     func hiddenCancelButton()
     {
         cancelButton.isHidden = true
-        actionWConstraint.constant = 230
+        actionWConstraint.constant = 222
+        actionMLConstraint.constant = -110
     }
     
     func hiddenActionButton()
     {
         actionButton.isHidden = true
-        cancelWConstraint.constant = 230
+        cancelWConstraint.constant = 222
     }
     
 }

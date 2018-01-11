@@ -9,8 +9,8 @@
 import UIKit
 
 enum WJAlertActionStyle: Int {
-    case `default`
     case cancel
+    case `default`
 }
 
 class WJAlertAction: NSObject {

@@ -15,10 +15,10 @@ class WJAlertController: UIViewController {
     var message: String
     var customView: UIView?
     var actions: [WJAlertAction]
-    var cancelAction: WJAlertAction?
-    var cancelHandler: ((WJAlertAction) -> Void)?
     var actionAction: WJAlertAction?
     var actionHandler: ((WJAlertAction) -> Void)?
+    var cancelAction: WJAlertAction?
+    var cancelHandler: ((WJAlertAction) -> Void)?
     
     init(title: String, message: String)
     {
@@ -61,29 +61,35 @@ class WJAlertController: UIViewController {
         let screenFrame = UIScreen.main.bounds
         self.view.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
         var height: CGFloat = 0
-        let contentMaxHeight = UIScreen.main.bounds.size.height - 135.0 - 24 * 2
+        let contentMaxHeight = UIScreen.main.bounds.size.height - 103.5 - 24 * 2
         if (message != "") {
-            let size = message.boundingRect(with: CGSize(width: 224, height: 0),
+            let size = message.boundingRect(with: CGSize(width: 204, height: 0),
                                             options: NSStringDrawingOptions.usesLineFragmentOrigin,
                                             attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)],
                                             context: nil).size
             alertView.messageMHConstraint.constant = size.height > contentMaxHeight ? contentMaxHeight : size.height
-            height = 135.0 + alertView.messageMHConstraint.constant
+            height = 103.5 + alertView.messageMHConstraint.constant
         } else {
             var frame = customView!.frame
             frame.size.height = frame.size.height > contentMaxHeight ? contentMaxHeight : frame.size.height
             customView!.frame = frame
             alertView.containerHConstraint.constant = frame.size.height
-            height = 135.0 + alertView.containerHConstraint.constant
+            height = 103.5 + alertView.containerHConstraint.constant
         }
-        alertView.frame = CGRect(x: 0, y: 0, width: 270, height: height)
+        alertView.frame = CGRect(x: 0, y: 0, width: 252, height: height)
         alertView.center = CGPoint(x: screenFrame.width/2.0, y: screenFrame.height/2.0)
         alertView.titleLabel.text = alertTitle
         if (alertView.messageLabel != nil) {
             alertView.messageLabel!.text = message
         }
-        alertView.cancelButton.addTarget(self, action: #selector(touchCancel), for: .touchUpInside)
+        updateActionsUI()
         alertView.actionButton.addTarget(self, action: #selector(touchAction), for: .touchUpInside)
+        alertView.cancelButton.addTarget(self, action: #selector(touchCancel), for: .touchUpInside)
+        self.view.addSubview(alertView)
+    }
+    
+    func updateActionsUI()
+    {
         for action in actions {
             if action.style == 0 {
                 alertView.cancelButton.setTitle(action.title, for: .normal)
@@ -95,13 +101,30 @@ class WJAlertController: UIViewController {
                 actionHandler = action.handler
             }
         }
-        if cancelHandler == nil {
-            alertView.hiddenCancelButton()
+        if cancelHandler != nil && actionHandler != nil {
+            setActionCorner(action: alertView.cancelButton, rectCorner: [UIRectCorner.topLeft, UIRectCorner.bottomLeft])
+            setActionCorner(action: alertView.actionButton, rectCorner: [UIRectCorner.topRight, UIRectCorner.bottomRight])
+        } else {
+            alertView.cancelButton.layer.cornerRadius = 6
+            alertView.actionButton.layer.cornerRadius = 6
+            if cancelHandler == nil {
+                alertView.hiddenCancelButton()
+            }
+            if actionHandler == nil {
+                alertView.hiddenActionButton()
+            }
         }
-        if actionHandler == nil {
-            alertView.hiddenActionButton()
-        }
-        self.view.addSubview(alertView)
+    }
+    
+    func setActionCorner(action: UIButton, rectCorner: UIRectCorner)
+    {
+        let path = UIBezierPath(roundedRect: action.bounds,
+                                byRoundingCorners: rectCorner,
+                                cornerRadii: CGSize(width: 6, height: 6))
+        let layer = CAShapeLayer()
+        layer.frame = action.bounds
+        layer.path = path.cgPath
+        action.layer.mask = layer
     }
     
     // MARK: -
