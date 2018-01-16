@@ -63,10 +63,11 @@ class WJAlertController: UIViewController {
         var height: CGFloat = 0
         let contentMaxHeight = UIScreen.main.bounds.size.height - 103.5 - 24 * 2
         if (message != "") {
-            let size = message.boundingRect(with: CGSize(width: 204, height: 0),
+            var size = message.boundingRect(with: CGSize(width: 204, height: 0),
                                             options: NSStringDrawingOptions.usesLineFragmentOrigin,
                                             attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)],
                                             context: nil).size
+            size.height += 10   // 计算size有误差，导致不换行，这里追加一点
             alertView.messageMHConstraint.constant = size.height > contentMaxHeight ? contentMaxHeight : size.height
             height = 103.5 + alertView.messageMHConstraint.constant
         } else {

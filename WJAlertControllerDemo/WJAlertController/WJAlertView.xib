@@ -26,7 +26,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阿三开多久啊嗍科技大楼开始金德拉克就是大咖结束了肯德基阿拉山口决定了卡颂敬阿莱克斯多久啊控件的" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcR-aE-0f3">
                     <rect key="frame" x="24" y="37.5" width="204" height="67"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="hVg-E9-fBb"/>
+                        <constraint firstAttribute="height" constant="67" id="hVg-E9-fBb"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
