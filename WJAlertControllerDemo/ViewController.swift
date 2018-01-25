@@ -37,34 +37,32 @@ class ViewController: UIViewController {
     {
 //        showAlertController()
 //        let alertController = WJAlertController(title: "提醒",
-//                                                message: "阿三开多久啊嗍科技大楼开始金德拉克就是大咖结束了肯德基阿拉山口决定了卡颂敬阿莱克斯多久啊控件的")
-        let customView = UIView()
-        customView.layer.cornerRadius = 6
-        customView.frame = CGRect(x: 0, y: 0, width: 100, height: 1000)
-        customView.backgroundColor = UIColor.red
+//                                                message: "阿三开多久啊阿三开啊阿三开啊阿三开")
+        let customView = UITextField(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        customView.backgroundColor = UIColor.white
         let alertController = WJAlertController(title: "提示",
                                                 customView: customView)
-        let exitAction = WJAlertAction(title: "取消",
-                                       style: 0,
-                                       handler: {
-                                        (action) in
-                                        print("touch exit...")
+//        let exitAction = WJAlertAction(title: "取消",
+//                                       style: 0,
+//                                       handler: {
+//                                        (action) in
+//                                        print("touch exit...")
+//        })
+//        alertController.addAction(exitAction)
+        let cancelAction = WJAlertAction(title: "取消",
+                                         style: 0,
+                                         handler: {
+                                            (action) in
+                                            print("touch cancel...")
         })
-        alertController.addAction(exitAction)
-//        let cancelAction = WJAlertAction(title: "取消",
-//                                         style: 0,
-//                                         handler: {
-//                                            (action) in
-//                                            print("touch cancel...")
-//        })
-//        alertController.addAction(cancelAction)
-//        let serviceAction = WJAlertAction(title: "去认证",
-//                                          style: 1,
-//                                          handler: {
-//                                            (action) in
-//                                            print("touch service...")
-//        })
-//        alertController.addAction(serviceAction)
+        alertController.addAction(cancelAction)
+        let serviceAction = WJAlertAction(title: "去认证",
+                                          style: 1,
+                                          handler: {
+                                            (action) in
+                                            print("touch service...")
+        })
+        alertController.addAction(serviceAction)
         self.present(alertController, animated: false, completion: nil)
     }
     

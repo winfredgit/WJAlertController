@@ -45,6 +45,32 @@ class WJAlertController: UIViewController {
         actions = [WJAlertAction]()
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .overFullScreen
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(sender:)),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHidden(sender:)),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
+    }
+    
+    deinit
+    {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow(sender: Notification)
+    {
+        let info = sender.userInfo!
+        let value = info[UIKeyboardFrameBeginUserInfoKey] as! NSValue
+        let keyboardSize = value.cgRectValue.size
+        alertView.center.y = (UIScreen.main.bounds.size.height - keyboardSize.height) / 2.0
+    }
+    
+    @objc func keyboardWillHidden(sender: Notification)
+    {
+        alertView.center.y = UIScreen.main.bounds.size.height / 2.0
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,6 +93,9 @@ class WJAlertController: UIViewController {
                                             options: NSStringDrawingOptions.usesLineFragmentOrigin,
                                             attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)],
                                             context: nil).size
+            if size.height >= 33 {  // 33大概两行高度，大于1行则居左对齐
+                alertView.messageLabel?.textAlignment = NSTextAlignment.left
+            }
             size.height += 10   // 计算size有误差，导致不换行，这里追加一点
             alertView.messageMHConstraint.constant = size.height > contentMaxHeight ? contentMaxHeight : size.height
             height = 103.5 + alertView.messageMHConstraint.constant
