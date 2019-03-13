@@ -88,10 +88,10 @@ class WJAlertController: UIViewController {
         self.view.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
         var height: CGFloat = 0
         let contentMaxHeight = UIScreen.main.bounds.size.height - 103.5 - 24 * 2
-        if (message != "") {
+        if (customView == nil) {
             var size = message.boundingRect(with: CGSize(width: 204, height: 0),
                                             options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                            attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)],
+                                            attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)],
                                             context: nil).size
             if size.height >= 33 {  // 33大概两行高度，大于1行则居左对齐
                 alertView.messageLabel?.textAlignment = NSTextAlignment.left
@@ -166,14 +166,16 @@ class WJAlertController: UIViewController {
     
     @objc func touchCancel()
     {
-        cancelHandler!(cancelAction!)
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false) {
+            self.cancelHandler!(self.cancelAction!)
+        }
     }
     
     @objc func touchAction()
     {
-        actionHandler!(actionAction!)
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false) {
+            self.actionHandler!(self.actionAction!)
+        }
     }
     
 }
